@@ -37,6 +37,7 @@ class Application : public IApplication {
                         * - 1: From one end node node to random partner node (1 to 1)
                         * - 2: From all end nodes to random partner nodes (n to n)
                         */
+  double required_fidelity; /**< Fidelity requirement for quantum application */
 
   void initialize() override;
   void handleMessage(cMessage *msg) override;

@@ -52,6 +52,7 @@ TEST(AppTest, InitSimple) {
   setParInt(app, "TrafficPattern", 0);
   setParInt(app, "distant_measure_count", 100);
   setParInt(app, "LoneInitiatorAddress", 0);
+  setParDouble(app, "required_fidelity", 0.9);
 
   sim->registerComponent(app);
   app->callInitialize();
@@ -70,6 +71,7 @@ TEST(AppTest, Init_OneConnection_NoSender) {
   setParInt(app, "TrafficPattern", 1);
   setParInt(app, "distant_measure_count", 100);
   setParInt(app, "LoneInitiatorAddress", 0);
+  setParDouble(app, "required_fidelity", 0.9);
 
   sim->registerComponent(app);
   app->callInitialize();
@@ -89,6 +91,7 @@ TEST(AppTest, Init_OneConnection_Sender) {
   setParInt(app, "TrafficPattern", 1);
   setParInt(app, "distant_measure_count", 100);
   setParInt(app, "LoneInitiatorAddress", mock_qnode->address);
+  setParDouble(app, "required_fidelity", 0.9);
   sim->registerComponent(app);
 
   auto *mock_qnode2 = new TestQNode{456};
@@ -121,6 +124,7 @@ TEST(AppTest, Init_OneConnection_Sender_TrafficPattern2) {
   setParInt(app, "TrafficPattern", 2);
   setParInt(app, "distant_measure_count", 100);
   setParInt(app, "LoneInitiatorAddress", 123);
+  setParDouble(app, "required_fidelity", 0.9);
   sim->registerComponent(app);
 
   app->callInitialize();
@@ -137,6 +141,7 @@ TEST(AppTest, Init_OneConnection_Sender_TrafficPattern2) {
   ASSERT_EQ(pkt->getActual_destAddr(), mock_qnode2->address);
   ASSERT_EQ(pkt->getSrcAddr(), 123);
   ASSERT_EQ(pkt->getDestAddr(), 123);
+  ASSERT_EQ(pkt->getRequired_fidelity(), 0.9);
 }
 
 }  // namespace

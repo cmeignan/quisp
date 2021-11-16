@@ -16,6 +16,7 @@ simple Application
         int LoneInitiatorAddress;
         int distant_measure_count = default(7000);
         // Maybe don't have to set the default here.
+        double required_fidelity = default(0.9);
 
     gates:
         input fromRouter @loose;

@@ -32,6 +32,7 @@ void Application::initialize() {
   my_address = provider.getQNode()->par("address");
   is_e2e_connection = par("EndToEndConnection");
   num_measure = par("distant_measure_count");
+  required_fidelity = par("required_fidelity");
 
   WATCH_VECTOR(other_end_node_addresses);
   storeEndNodeAddresses();
@@ -86,6 +87,7 @@ ConnectionSetupRequest *Application::createConnectionSetupRequest(int dest_addr,
   pk->setSrcAddr(my_address);
   pk->setNum_measure(num_measure);
   pk->setKind(7);
+  pk->setRequired_fidelity(required_fidelity);
   return pk;
 }
 

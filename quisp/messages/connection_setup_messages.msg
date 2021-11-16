@@ -24,6 +24,7 @@ packet ConnectionSetupRequest extends Header
     int stack_of_QNodeIndexes[];
     int stack_of_linkCosts[];
     QNIC_pair_info stack_of_QNICs[];
+    double required_fidelity;
 }
 
 packet RejectConnectionSetupRequest extends Header
